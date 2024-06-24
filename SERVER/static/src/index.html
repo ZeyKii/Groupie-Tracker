@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Flowbite IMPORT -->
+  <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css"  rel="stylesheet" />-->
+
+  <!-- TailWind CSS -->
+  <link href="/static/dist/output.css" rel="stylesheet">
+
+  <title>The Groupie Tracker</title>
+</head>
+
+<body class="h-screen w-screen overflow-x-hidden" style="background-color: rgb(47, 47, 51);">
+  <!-- JSFILE Flowbite 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script> -->
+
+
+  <header>
+    <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-indigo-900">
+      <p class="flex justify-center text-lg font-semibold whitespace-nowrap dark:text-white">
+        ZUBROWSKA</p> </nav>
+
+
+
+  </header>
+
+  <main>
+
+    <!-- HOME TEXT -->
+  <div class=" flex py-11 justify-center w-full">
+    <h1 class="relative font-bold text-5xl pb-11 subpixel-antialiased opacity-80 top-10 mx-5 mb-16 text-emerald-400 "id="Titre"> WELCOME TO THE <br> GROUPIETRACKER</h1>
+    <div class="relative rotate-lg-6 w-28 h-28">
+    <img src="/static/src/medias/groupieLogo.png">
+    </div>
+  </div>
+
+
+
+    <!-- SEARCHBAR -->
+    <form class="flex justify-center" method="post">
+      <form class="flex justify-center" id="searchbar"> 
+        <div class="flex relative">
+
+          <div class="relative w-full">
+            <input type="search" name="input" autocomplete="off" id="search-dropdown"
+              class="block p-2.5 w-80 z-20 text-sm overflow-x-hidden text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-50 border-l-2 border rounded-xl border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
+              placeholder="Search for an Artist, a Group..." required list="autocompletion">
+
+            <!-- DATALIST POUR L'AUTOCOMPLETE  -->
+            <datalist id="autocompletion" > 
+              {{ range $artist := . }}
+              {{ $artist.Name }}
+              <option value="{{ $artist.Name }}"> {{ $artist.Name }}</option>
+              {{ end}}
+              {{ range $artist := . }}
+              {{ $artist.CreationDate }}
+              <option value="{{ $artist.CreationDate }}"> {{ $artist.CreationDate }}</option>
+              {{ end}}
+              {{ range $artist := . }}
+              {{ .Members }}
+              <option value="{{ $artist.Members }}"> {{ $artist.Members }}</option>
+              {{ end }}
+              {{ range $artist := . }}
+              {{ .FirstAlbum }}
+              <option value="{{ $artist.FirstAlbum }}"> {{ $artist.FirstAlbum }}</option>
+              {{ end }}
+            </datalist>
+
+            <!-- BOUTON DE RECHERCHE -->
+            <div id="suggestions-container"></div>
+            <button type="submit"
+              class="absolute top-0 left-70 p-2.5 text-sm font-medium text-white bg-blue-700 rounded-r-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+              <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+              </svg>
+              <span class="sr-only">Search</span>
+            </button>
+          </div>
+      </form>
+    </form>
+      </div>
+      <div class="flex justify-center items-center ">
+        <a href="http://localhost:8080">
+          <button type="button"
+            class="inline-block my-4 px-6 py-2 border-2 border-gray-200 text-gray-200 font-medium text-xs leading-tight uppercase rounded-full hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">Reset
+            Filters</button>
+        </a>
+        <button type="button" id="filterButton"
+          class="flex my-4 mx-2 px-6 py-2 border-2 border-gray-200 text-gray-200 font-medium text-xs leading-tight uppercase rounded-full hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">Show
+          Filters</button>
+      </div>
+
+      <!-- FILTERS BOX -->
+      <div class="flex w-full justify-center">
+        <form id="filterBox" class="rounded-xl w-80">
+          <div class="block rounded-3xl shadow-lg bg-opacity-50 bg-indigo-50 max-w-xs text-center">
+            <label for="groups">Choose a genre</label><br>
+            <input type="radio" id="Alternative" name="groups" value="Alternative">
+            <label for="Alternative">Alternative</label><br>
+            <input type="radio" id="Classique" name="groups" value="Classique">
+            <label for="Classique">Classique</label><br>
+            <input type="radio" id="Dance" name="groups" value="Dance">
+            <label for="Dance">Dance</label><br>
+            <input type="radio" id="Rap_Hip Hop" name="groups" value="Rap_Hip Hop">
+            <label for="Rap_Hip Hop">Rap/Hip Hop</label><br>
+            <input type="radio" id="Pop" name="groups" value="Pop">
+            <label for="Pop">Pop</label><br>
+            <input type="radio" id="Reggae" name="groups" value="Reggae">
+            <label for="Reggae">Reggae</label><br>
+            <input type="radio" id="Rock" name="groups" value="Rock">
+            <label for="Rock">Rock</label><br>
+            <input type="radio" id="Metal" name="groups" value="Metal">
+            <label for="Metal">Metal</label><br>
+            <div class="w-full border-b border-gray-200 opacity-40 py-2"></div>
+            <div class="relative w-full">
+
+              <label for="creationYear" class="flex justify-center bottom-1 top-2">Creation Year</label>
+              <p id="rangeValue">1968</p>
+              <input type="range" min="1958" id="CreationDate" max="2015" value="1" onmousemove="creationDateSlide()">
+
+
+              <label for="firstAlbum" class="flex justify-center bottom-1 top-2">First Album</label>
+              <p id="firstAlbum">1968</p>
+              <input type="range" min="1958" id="firstAlbumSlider" max="2015" value="1" onmousemove="firstAlbumSlide()">
+
+            </div>
+          </div>
+        </form>
+      </div>
+
+      
+      <!-- IMAGES & MISC -->
+    <!--<img src="/static/src/medias/DevilD.gif" alt="devild" id="DevilD" class="w-1/6 relative left-32"> -->
+
+      <!-- GROUPS CARDS -->
+
+      <div class=" flex justify-center h-auto my-20 items-center">
+        <img src="/static/src/medias/scrollT.gif" class="w-1/12">
+      </div>
+
+
+
+      <div class="grid place-items-center gap-y-7 lg:grid-cols-3 xl:grid-cols-5 md:grid-cols-1">
+
+        {{ range $artist := . }}
+
+        <form action="/artist" id="box">
+          <div class="relative top-10">
+
+
+            <div
+              class="block rounded-3xl shadow-lg bg-opacity-80 hover:bg-opacity-100 bg-indigo-50 hover:bg-indigo-100 max-w-xs text-center">
+              <a href="/artist?id={{ $artist.Id }}">
+                <div class="py-3 border-b border-gray-300">
+                  <p class="font-bold font ">{{ $artist.Name }}</p>
+
+                </div>
+                <div class="p-6 mx-7">
+                  <p class="font uppercase font-josefin">Started music on </p>
+                  <h5 class="text-lg text-yellow-800 font-semibold mb-2">{{ $artist.CreationDate }}</h5>
+                  <p class="text-gray-700 text-base mb-4">
+                  </p>
+
+                  <div class="relative images">
+                    <img class="h-24 w-24 shadow-lg rounded-full" src="{{ $artist.Image }}">
+                  </div>
+                  <div class="py-3 px-16 border-t border-gray-300 text-gray-600">
+                    Click me 
+                  </div>
+                </div>
+              </div>
+          </div>
+          </a>
+        </form>
+        {{ end}}
+        <script>
+          const objApi = {{ .}};
+        </script>
+      </div>
+  </main>
+
+  <footer>
+
+  </footer>
+</body>
+
+
+<!-- Javascript FrontEnd script -->
+<!-- <script>
+    const artists = {{.}};
+  </script> 
+  <script src="/static/src/seug.js"></script> -->
+
+<script src="/static/src/js/index.js"></script>
+<script src="/static/src/js/filters.js"></script>
+
+
+</html>

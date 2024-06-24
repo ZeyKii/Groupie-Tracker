@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="/static/dist/output.css" rel="stylesheet">
+
+    <title>{{ .A.Name }} Infos</title>
+
+</head>
+
+
+<body class="h-screen w-screen overflow-x-hidden" style="background-color: rgb(47, 47, 51);">
+
+    <header>
+        <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-indigo-900">
+            <a href="http://localhost:8080">
+                <p class=" w-40 relative left-70 text-lg justify-start items-center font-semibold whitespace-nowrap dark:text-white">ZUBROWSKA</p>
+            </a>
+    </header>
+
+
+    <main>
+
+        <!-- INFO CARD -->
+        <div class="container my-24 px-6 mx-auto">
+
+            <!-- STYLE & DISPO IMAGE -->
+            <section class="mb-32 text-gray-800 text-center lg:text-left">
+                <div class="container mx-auto xl:px-32 text-center lg:text-left">
+                    <!-- SETUP GRILLE -->
+                    <div class="grid lg:grid-cols-2 items-center">
+                        <div class="mb-12 lg:mb-0">
+                            <!-- CARTE -->
+                            <div class="relative block rounded-lg shadow-lg px-6 py-12 md:px-12 lg:-mr-14"
+                                style="background: hsla(0, 0%, 100%, 0.55); backdrop-filter: blur(30px); z-index: 1">
+                                <h2 class="text-3xl font-bold mb-4 display-5 w-48">{{ .A.Name }}</h2>
+
+                                <!-- GRILLE DU HAUT -->
+                                <div class="h-full grid grid-cols-3 w-full">
+                                    <!-- Column 1 (0)-->
+                                    <div>
+                                        <p class="text-gray-800 mb-3 font-bold w-48 font uppercase">Group Members</p>
+                                        {{ range $members := .A.Members }}
+                                        <p class="w-48 col-end-1">{{ $members }}</p>
+                                        {{ end }}
+                                    </div>
+                                    <!-- Column 2 (1)-->
+                                    <div>
+                                        <p
+                                            class="w-48 text-gray-800 text-center mb-3 col-start-1 font-bold font uppercase">
+                                            First Album</p>
+                                        <p class="w-48 text-center col-end-1">{{ .A.FirstAlbum }}</p>
+                                    </div>
+                                    <!-- Column 3 (2)
+                                    <div class="grid w-10 grid-cols-2">
+                                        <p class="w-48 text-gray-800 mb-3 content-start col-start-3 font-bold font uppercase">Dates</p>
+                                        {{ range $dates := .D.Dates }}
+                                        <p class="w-48">{{ $dates }}</p>
+                                            {{ end }} 
+                                    </div>-->
+                                    <div class="flex justify-center">
+                                        <button type="button" id="moreInfos"
+                                            class="px-4 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-emerald-400 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:bg-emerald-600 active:shadow-lg transition duration-150 ease-in-out">Get more infos</button>
+                                    </div>
+                                </div>
+                                <!-- GRILLE DU BAS -->
+                                <div class="grid md:grid-cols-3 gap-x-6">
+                                    <div class="mb-12 md:mb-0">
+                                        <!-- Column 1  -->
+                                        <h5 class="text-lg font-medium my-8 text-gray-500 mb-0">Started Music on</h5>
+                                        <h2 class="text-3xl font-bold text-dark mb-4">{{ .A.CreationDate }}</h2>
+                                    </div>
+                                        <!-- Column 2  -->
+                                    <div class="mb-12 md:mb-0">
+                                        <h5 class="text-lg font-medium my-8 text-gray-500 mb-0">Concerts given</h5>
+                                        <h2 class="text-3xl font-bold text-dark mb-4">{{ .C }}</h2>
+                                    </div>
+                                        <!-- Column 3  -->
+                                    <div class="mb-12 md:mb-0">
+                                        <h5 class="text-lg font-light my-8 text-center text-gray-500 mb-0">Back button</h5>
+                                        <div class="flex justify-center">
+                                            <a href="http://localhost:8080/">
+                                                <button type="button" class="px-6 py-2.5 bg-blue-500 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-emerald-700 hover:shadow-lg focus:bg-emerald-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-emerald-00 active:shadow-lg transition duration-150 ease-in-out">Homepage</button></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                        <!--  HIDDEN DIV  -->
+                                <div id="infoBloc" class="h-450 w-full">
+                                    <div class="grid grid-cols-3">
+
+                                        <div>
+                                            <p class="text-gray-800 mb-3 font-bold w-48 font uppercase">Dates</p>
+                                            {{ range $dates := .D.Dates }}
+                                            <p class="w-48">{{ $dates }}</p>
+                                            {{ end }}
+                                        </div>
+
+                                        <div>
+                                            <p class="text-gray-800 mb-3 col-start-1 font-bold w-48 font uppercase">Locations</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- IMAGE ARTIST  -->
+                        <div>
+                            <img src="{{ .A.Image }}" class="w-full shadow-lg fancy-border-radius rotate-lg-6" alt=""/>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            
+        </div>
+    </main>
+
+
+
+</body>
+<!-- Javascript FrontEnd script -->
+<script type="text/javascript" src="/static/src/js/infoFront.js"></script>
+
+</html>

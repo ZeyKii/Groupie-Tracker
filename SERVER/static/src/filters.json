@@ -1,0 +1,10 @@
+{
+    "Alternative": ["Imagine Dragons","Twenty One Pilots","Muse","Red Hot Chili Peppers","Thirty Seconds to Mars","Fall Out Boy","Foo Fighters","Green Day","Linkin Park","Arctic Monkeys","Mamonas Assassinas"],
+    "Classique": ["Bobby McFerrins"],
+    "Dance": ["The Chainsmokers","R3HAB"],
+    "Rap/Hip Hop": ["XXXTentacion","Mac Miller","Joyner Lucas","Kendrick Lamar","Juice Wrld","Logic","Post Malone","Travis Scott","J. Cole","Mobb Deep","NWA","Eminem"],
+    "Pop": ["Rihanna","Katy Perry","The Jimi Hendrix Experience","Phil Collins","Maroon 5","Alec Benjamin","XXXTentacion","Bee Gees","Gorillaz"],
+    "Reggae": ["SOJA"],
+    "Rock": ["Queen","Pink Floyd","Scorpions","ACDC","Pearl Jam","Genesis","Dire Straits","U2","Led Zeppelin","Nickelback","Aerosmith","Guns N' Roses","Coldplay","The Rolling Stones","Eagles","Deep Purple"],
+    "Metal": ["Metallica"]
+}

@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,300&display=swap');
+
+.images {
+    display: flex;
+    /*left: 88px;*/
+    justify-content: center;
+    bottom: 16px;
+}
+#DevilD {
+    top: 70px;
+}
+#searchbar {
+    margin-bottom: 250px;
+}
+#filterBox {
+    display: none;
+    padding: 10px;
+  }
+  
+  input[type="radio"] {
+    margin: 0 10px 0 0;
+  }
+#infoBloc {
+    display: none;
+}
+
+@media (min-width: 992px) {
+    .rotate-lg-6 {
+        transform: rotate(6deg);
+    }
+}
+
+.fancy-border-radius {
+    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+}
